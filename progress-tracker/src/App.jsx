@@ -7,6 +7,7 @@ import Navbar from './components/NavBar/Navbar'
 
 function App() {
   const [count, setCount] = useState(0)
+  
 
   return (
     <div className='min-h-screen flex flex-col gap-20 bg-linear-to-r from-indigo-50 via-purple-50 to-pink-50'>

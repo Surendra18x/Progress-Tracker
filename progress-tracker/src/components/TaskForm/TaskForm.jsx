@@ -1,31 +1,33 @@
 import React, { useEffect, useState } from "react";
 import Button from "../DesignSystem/Button";
+import { SquarePen, Trash } from "lucide-react";
+import ButtonIcon from "../DesignSystem/ButtonIcon";
 
 function TaskForm() {
   const [item, setItem] = useState("");
-  const [editIndex, setEditIndex] = useState(null)
+  const [editIndex, setEditIndex] = useState(null);
   const [itemlist, setItemList] = useState(() => {
     const storedData = localStorage.getItem("tasks");
-    return storedData? JSON.parse(storedData) : [];
+    return storedData ? JSON.parse(storedData) : [];
   });
   const [showImg, setShowImg] = useState(false);
 
   function handleClick(e) {
     e.preventDefault();
-    if(editIndex !== null){
-        const updatedList = itemlist.map((task,i) => 
-        i === editIndex ? {...task,text:item,completed: false} : task
-        );
-        setItemList(updatedList);
-        setEditIndex(null);
-    }else{
-        const newTask = {
-      text: item,
-      completed: false,
-    };
-    setItemList([...itemlist, newTask]);
+    if (editIndex !== null) {
+      const updatedList = itemlist.map((task, i) =>
+        i === editIndex ? { ...task, text: item, completed: false } : task,
+      );
+      setItemList(updatedList);
+      setEditIndex(null);
+    } else {
+      const newTask = {
+        text: item,
+        completed: false,
+      };
+      setItemList([...itemlist, newTask]);
     }
-    
+
     setItem("");
   }
 
@@ -43,14 +45,14 @@ function TaskForm() {
     setItemList(updatedTask);
   }
 
-  function editTask(e, index){
+  function editTask(e, index) {
     e.preventDefault();
     setItem(itemlist[index].text);
-    setEditIndex(index)
+    setEditIndex(index);
   }
 
   const completedTasks = itemlist.filter((task) => task.completed).length;
-  const totalTask = itemlist.length
+  const totalTask = itemlist.length;
 
   const progress = totalTask
     ? Math.round((completedTasks / totalTask) * 100)
@@ -63,11 +65,9 @@ function TaskForm() {
     }
   }, [completedTasks]);
 
-  
-
   useEffect(() => {
-    localStorage.setItem("tasks",JSON.stringify(itemlist))
-  } , [itemlist])
+    localStorage.setItem("tasks", JSON.stringify(itemlist));
+  }, [itemlist]);
 
   return (
     <div className="flex flex-col justify-center items-center">
@@ -86,7 +86,7 @@ function TaskForm() {
             className="bg-indigo-500 hover:bg-indigo-600 text-white px-3 cursor-pointer py-1  rounded"
             onClick={handleClick}
           >
-           {editIndex !== null ? "Update" : "Add"}
+            {editIndex !== null ? "Update" : "Add"}
           </button>
         </div>
       </form>
@@ -112,16 +112,17 @@ function TaskForm() {
                   {items.text}
                 </li>
               </div>
-              <div>
-                <button onClick={(e) => editTask(e,index)} className="mr-4 cursor-pointer  bg-yellow-400 hover:bg-yellow-500 p-2 rounded-md text-amber-50 font-bold">
-                  Edit
-                </button>
-                <button
+              <div className="flex gap-2">
+                <ButtonIcon
+                  onClick={(e) => editTask(e, index)}
+                  varint="info"
+                  Icon={SquarePen}
+                />
+                <ButtonIcon
                   onClick={(e) => deleteItem(e, index)}
-                  className="mr-0 cursor-pointer bg-red-500 hover:bg-red-600 p-2 rounded-md text-amber-50 font-bold"
-                >
-                  delete
-                </button>
+                  varint="danger"
+                  Icon={Trash}
+                />
               </div>
             </div>
           ))}
@@ -156,19 +157,19 @@ function TaskForm() {
             </button>
           </div>
         </div>
-      )} 
+      )}
       <div className="mt-8 grid grid-cols-3 gap-4 w-96">
         <div className="bg-blue-100 p-4 rounded-xl text-center">
-            <p className="text-lg font-bold">{totalTask}</p>
-            <p className="text-sm text-gray-600">Total Tasks</p>
+          <p className="text-lg font-bold">{totalTask}</p>
+          <p className="text-sm text-gray-600">Total Tasks</p>
         </div>
         <div className="bg-green-100 p-4 rounded-xl text-center">
-            <p className="text-lg font-bold">{completedTasks}</p>
-            <p className="text-sm text-gray-600">Completed Tasks</p>
+          <p className="text-lg font-bold">{completedTasks}</p>
+          <p className="text-sm text-gray-600">Completed Tasks</p>
         </div>
         <div className="bg-purple-100 p-4 rounded-xl text-center">
-            <p className="text-lg font-bold">{progress}%</p>
-            <p className="text-sm text-gray-600">Completion</p>
+          <p className="text-lg font-bold">{progress}%</p>
+          <p className="text-sm text-gray-600">Completion</p>
         </div>
       </div>
     </div>
