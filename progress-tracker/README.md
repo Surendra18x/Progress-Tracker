@@ -1,16 +1,45 @@
-# React + Vite
+# 🚀 Roadmap Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, animated progress tracking application built with React, Framer Motion, and Tailwind CSS. Transform your daily tasks into an interactive journey!
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Animated Roadmap:** Visualize your progress on a dynamic, wavy path.
+- **Interactive Avatar:** Watch your runner sprint to the next milestone as you complete tasks.
+- **Celebration Mode:** Grand confetti celebration upon completing all milestones.
+- **Smart Analytics:** Real-time dashboard with completion rates and efficiency tracking.
+- **Modern UI:** Sleek glassmorphism design with a responsive layout.
+- **Local Persistence:** Your tasks are automatically saved to your browser's local storage.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend:** React 19 (Vite)
+- **Styling:** Tailwind CSS v4
+- **Animations:** Framer Motion
+- **Icons:** Lucide React
+- **Celebrations:** Canvas Confetti
+- **Routing:** React Router 7
 
-## Expanding the ESLint configuration
+## 🚀 Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Run Development Server:**
+   ```bash
+   npm run dev
+   ```
+
+3. **Build for Production:**
+   ```bash
+   npm run build
+   ```
+
+## 📂 Project Structure
+
+- `src/components/RoadMap`: The core animated visualization.
+- `src/components/TaskList`: Modular task management.
+- `src/components/Dashboard`: Analytics and progress overview.
+- `src/components/DesignSystem`: Reusable UI primitives.
