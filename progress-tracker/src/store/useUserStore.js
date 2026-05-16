@@ -6,8 +6,7 @@ const useUserStore = create(
     (set) => ({
       user: {
         name: 'Commander',
-        avatar: '🚀',
-        theme: 'system',
+        avatar: '🚀', // Still here but we will use the component
         joinedAt: new Date().toISOString(),
       },
 
@@ -15,26 +14,6 @@ const useUserStore = create(
         set((state) => ({
           user: { ...state.user, ...updates },
         }));
-      },
-
-      setTheme: (theme) => {
-        set((state) => ({
-          user: { ...state.user, theme },
-        }));
-        
-        // Apply theme to document
-        if (theme === 'dark') {
-          document.documentElement.classList.add('dark');
-        } else if (theme === 'light') {
-          document.documentElement.classList.remove('dark');
-        } else {
-          // system
-          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.documentElement.classList.add('dark');
-          } else {
-            document.documentElement.classList.remove('dark');
-          }
-        }
       },
     }),
     {

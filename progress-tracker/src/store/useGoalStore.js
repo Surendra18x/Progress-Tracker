@@ -3,7 +3,7 @@ import { persist } from 'zustand/middleware';
 
 const useGoalStore = create(
   persist(
-    (set, get) => ({
+    (set) => ({
       goals: [],
 
       addGoal: (goal) => {

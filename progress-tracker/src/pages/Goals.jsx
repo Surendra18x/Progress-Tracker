@@ -17,7 +17,7 @@ const Goals = () => {
     <div className="px-4 py-8 max-w-lg mx-auto min-h-screen">
       <header className="flex justify-between items-center mb-10">
         <div>
-          <h1 className="text-3xl font-black text-slate-800 dark:text-white tracking-tight">Mission Goals</h1>
+          <h1 className="text-3xl font-black text-slate-800 tracking-tight">Mission Goals</h1>
           <div className="flex items-center gap-2 mt-1 text-slate-400">
             <Target size={14} />
             <span className="text-xs font-bold uppercase tracking-widest">{activeGoals.length} Active Objectives</span>
@@ -34,7 +34,7 @@ const Goals = () => {
       <section className="space-y-10">
         {goalsWithDates.length > 0 && (
           <div>
-            <h2 className="text-xl font-black text-slate-800 dark:text-white mb-6 flex items-center gap-2">
+            <h2 className="text-xl font-black text-slate-800 mb-6 flex items-center gap-2">
               <Calendar size={20} className="text-primary-500" />
               Timeline
             </h2>
@@ -43,7 +43,7 @@ const Goals = () => {
         )}
 
         <div>
-          <h2 className="text-xl font-black text-slate-800 dark:text-white mb-6 flex items-center gap-2">
+          <h2 className="text-xl font-black text-slate-800 mb-6 flex items-center gap-2">
             <LayoutGrid size={20} className="text-primary-500" />
             Active Goals
           </h2>
@@ -67,12 +67,12 @@ const Goals = () => {
             <Motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-center py-20 px-8 border-2 border-dashed border-surface-200 dark:border-surface-800 rounded-[3rem] bg-white/50 dark:bg-surface-900/50 backdrop-blur-sm"
+              className="text-center py-20 px-8 border-2 border-dashed border-surface-200 rounded-[3rem] bg-white/50 backdrop-blur-sm"
             >
-              <div className="w-20 h-20 bg-surface-100 dark:bg-surface-800 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-inner">
+              <div className="w-20 h-20 bg-surface-100 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-inner">
                 <LayoutGrid className="text-slate-300 w-10 h-10" />
               </div>
-              <h3 className="text-xl font-black text-slate-800 dark:text-white mb-2">Command Center Empty</h3>
+              <h3 className="text-xl font-black text-slate-800 mb-2">Command Center Empty</h3>
               <p className="text-slate-400 text-sm font-medium leading-relaxed">
                 Every legend starts with a vision. Set your first big goal and start forging your roadmap today.
               </p>

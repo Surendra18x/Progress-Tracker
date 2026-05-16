@@ -6,18 +6,19 @@ import AddTaskModal from '../components/tasks/AddTaskModal';
 import Heatmap from '../components/tasks/Heatmap';
 import { Plus, Calendar as CalendarIcon, TrendingUp } from 'lucide-react';
 import { format } from 'date-fns';
+import { getLocalDateString } from '../utils/dateHelpers';
 
 const Tasks = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const today = format(new Date(), 'yyyy-MM-dd');
+  const today = getLocalDateString();
   const allTasks = useTaskStore((state) => state.tasks);
-  const todayTasks = useTaskStore((state) => state.getTasksByDate(today));
+  const todayTasks = allTasks.filter(t => t.date === today);
 
   return (
     <div className="px-4 py-8 max-w-lg mx-auto min-h-screen">
       <header className="flex justify-between items-center mb-10">
         <div>
-          <h1 className="text-3xl font-black text-slate-800 dark:text-white tracking-tight">Daily Tasks</h1>
+          <h1 className="text-3xl font-black text-slate-800 tracking-tight">Daily Tasks</h1>
           <div className="flex items-center gap-2 mt-1 text-slate-400">
             <CalendarIcon size={14} />
             <span className="text-xs font-bold uppercase tracking-widest">{format(new Date(), 'EEEE, MMM do')}</span>
@@ -35,7 +36,7 @@ const Tasks = () => {
         <DailyProgressBar tasks={todayTasks} />
         
         <div>
-          <h2 className="text-xl font-black text-slate-800 dark:text-white mb-4 flex items-center gap-2">
+          <h2 className="text-xl font-black text-slate-800 mb-4 flex items-center gap-2">
             <TrendingUp size={20} className="text-primary-500" />
             Consistency
           </h2>

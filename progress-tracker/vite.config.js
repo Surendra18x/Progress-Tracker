@@ -13,9 +13,9 @@ export default defineConfig({
       manifest: {
         name: 'DayForge - Progress Tracker',
         short_name: 'DayForge',
-        description: 'Track your daily tasks, goals, and growth',
-        theme_color: '#0f172a',
-        background_color: '#0f172a',
+        description: 'Forge your path, one task at a time',
+        theme_color: '#22c55e',
+        background_color: '#f8fafc',
         display: 'standalone',
         orientation: 'portrait',
         scope: '/',

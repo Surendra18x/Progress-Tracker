@@ -3,7 +3,7 @@ import { persist } from 'zustand/middleware';
 
 const useHabitStore = create(
   persist(
-    (set, get) => ({
+    (set) => ({
       habits: [],
 
       addHabit: (title, frequency = 'daily') => {

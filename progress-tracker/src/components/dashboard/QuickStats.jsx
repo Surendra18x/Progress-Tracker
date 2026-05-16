@@ -5,12 +5,14 @@ import useStreakStore from '../../store/useStreakStore';
 import { motion as Motion } from 'framer-motion';
 import { Target, Flame, CheckCircle } from 'lucide-react';
 
+import { getLocalDateString } from '../../utils/dateHelpers';
+
 const QuickStats = () => {
   const { tasks } = useTaskStore();
   const { goals } = useGoalStore();
   const { streak } = useStreakStore();
 
-  const today = new Date().toISOString().split('T')[0];
+  const today = getLocalDateString();
   const todayTasks = tasks.filter(t => t.date === today);
   const todayCompleted = todayTasks.filter(t => t.status === 'completed').length;
   
@@ -22,7 +24,7 @@ const QuickStats = () => {
       value: `${todayCompleted}/${todayTasks.length}`, 
       icon: <CheckCircle size={14} />,
       color: 'text-primary-500',
-      bg: 'bg-primary-100/50 dark:bg-primary-900/20'
+      bg: 'bg-primary-100/50'
     },
     { 
       label: 'Streak', 
@@ -36,7 +38,7 @@ const QuickStats = () => {
       value: activeGoals.length, 
       icon: <Target size={14} />,
       color: 'text-indigo-500',
-      bg: 'bg-indigo-100/50 dark:bg-indigo-900/20'
+      bg: 'bg-indigo-100/50'
     },
   ];
 
@@ -48,7 +50,7 @@ const QuickStats = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: i * 0.1 }}
-          className="bg-white dark:bg-surface-800 p-4 rounded-2xl border border-surface-100 dark:border-surface-700 shadow-sm"
+          className="bg-white p-4 rounded-2xl border border-surface-100 shadow-sm"
         >
           <div className={`w-7 h-7 ${stat.bg} ${stat.color} rounded-lg flex items-center justify-center mb-2`}>
             {stat.icon}

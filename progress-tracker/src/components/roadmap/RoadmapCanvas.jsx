@@ -62,12 +62,12 @@ const RoadmapCanvas = ({ tasks }) => {
   };
 
   return (
-    <div className="w-full transition-colors duration-500">
+    <div className="w-full">
       {/* Desktop Horizontal RoadMap */}
-      <div className="hidden md:flex w-full py-12 justify-center bg-white/50 dark:bg-surface-900/50 backdrop-blur-md rounded-[3rem] shadow-2xl my-8 border border-surface-100 dark:border-surface-800 relative overflow-hidden group">
+      <div className="hidden md:flex w-full py-12 justify-center bg-white/50 backdrop-blur-md rounded-[3rem] shadow-2xl my-8 border border-surface-100 relative overflow-hidden group">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <Motion.div animate={{ x: [-20, 20, -20] }} transition={{ repeat: Infinity, duration: 15 }} className="absolute top-8 left-[10%] opacity-30"><Cloud size={64} className="text-slate-200 dark:text-surface-800" /></Motion.div>
-          <Motion.div animate={{ x: [10, -10, 10] }} transition={{ repeat: Infinity, duration: 12 }} className="absolute top-16 right-[15%] opacity-20"><Cloud size={48} className="text-slate-200 dark:text-surface-800" /></Motion.div>
+          <Motion.div animate={{ x: [-20, 20, -20] }} transition={{ repeat: Infinity, duration: 15 }} className="absolute top-8 left-[10%] opacity-30"><Cloud size={64} className="text-slate-200" /></Motion.div>
+          <Motion.div animate={{ x: [10, -10, 10] }} transition={{ repeat: Infinity, duration: 12 }} className="absolute top-16 right-[15%] opacity-20"><Cloud size={48} className="text-slate-200" /></Motion.div>
         </div>
 
         <div className="relative z-10 w-full max-w-4xl px-4">
@@ -75,9 +75,9 @@ const RoadmapCanvas = ({ tasks }) => {
             <svg width="100%" height="100%" viewBox={`0 0 ${width} ${height}`} className="drop-shadow-2xl overflow-visible">
               <defs>
                 <linearGradient id="roadGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#f8fafc" className="dark:stop-color-surface-800" />
-                  <stop offset="50%" stopColor="#f1f5f9" className="dark:stop-color-surface-700" />
-                  <stop offset="100%" stopColor="#f8fafc" className="dark:stop-color-surface-800" />
+                  <stop offset="0%" stopColor="#f8fafc" />
+                  <stop offset="50%" stopColor="#f1f5f9" />
+                  <stop offset="100%" stopColor="#f8fafc" />
                 </linearGradient>
                 <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="#22c55e" />
@@ -117,7 +117,6 @@ const RoadmapCanvas = ({ tasks }) => {
                     <Motion.circle
                       cx={p.x} cy={p.y} r={isCurrent ? "22" : "18"}
                       fill={isCompleted ? "#22c55e" : "white"}
-                      className="dark:fill-surface-800"
                       stroke={isCompleted ? "#dcfce7" : "#f1f5f9"}
                       strokeWidth="4"
                       animate={{ scale: isCurrent ? [1, 1.1, 1] : 1 }}
@@ -128,7 +127,7 @@ const RoadmapCanvas = ({ tasks }) => {
                         {getTaskIcon(task)}
                       </div>
                     </foreignObject>
-                    <text x={p.x} y={p.y + 45} textAnchor="middle" className={`text-[11px] font-black uppercase tracking-widest ${isCompleted ? 'fill-primary-600 dark:fill-primary-400' : 'fill-slate-400 dark:fill-slate-600'}`}>
+                    <text x={p.x} y={p.y + 45} textAnchor="middle" className={`text-[11px] font-black uppercase tracking-widest ${isCompleted ? 'fill-primary-600' : 'fill-slate-400'}`}>
                       {task.title.substring(0, 10)}
                     </text>
                   </g>
@@ -155,8 +154,8 @@ const RoadmapCanvas = ({ tasks }) => {
       </div>
 
       {/* Mobile Vertical RoadMap */}
-      <div className="md:hidden w-full py-8 px-6 bg-white dark:bg-surface-900 rounded-[2.5rem] shadow-xl my-4 border border-surface-100 dark:border-surface-800 relative transition-colors">
-        <div className="absolute left-1/2 top-0 bottom-0 w-8 -translate-x-1/2 bg-slate-50 dark:bg-surface-800/50 rounded-full" />
+      <div className="md:hidden w-full py-8 px-6 bg-white rounded-[2.5rem] shadow-xl my-4 border border-surface-100 relative transition-colors">
+        <div className="absolute left-1/2 top-0 bottom-0 w-8 -translate-x-1/2 bg-slate-50 rounded-full" />
         
         {/* Progress Bar */}
         <Motion.div 
@@ -169,8 +168,8 @@ const RoadmapCanvas = ({ tasks }) => {
         <div className="relative z-10 flex flex-col items-center gap-12">
           {/* Start Marker */}
           <div className="flex flex-col items-center mb-4">
-            <div className="p-3 bg-surface-100 dark:bg-surface-800 rounded-2xl mb-2">
-              <GraduationCap size={24} className="text-primary-600 dark:text-primary-400" />
+            <div className="p-3 bg-surface-100 rounded-2xl mb-2">
+              <GraduationCap size={24} className="text-primary-600" />
             </div>
             <span className="text-[10px] font-black text-primary-400 uppercase tracking-widest">The Beginning</span>
           </div>
@@ -184,7 +183,7 @@ const RoadmapCanvas = ({ tasks }) => {
                 {/* Left Side (Icons) */}
                 <div className="flex-1 flex justify-end">
                    {index % 2 === 0 && (
-                     <div className={`p-3 rounded-2xl bg-white dark:bg-surface-800 shadow-lg border border-surface-100 dark:border-surface-700 ${isCompleted ? 'text-primary-600 dark:text-primary-400' : 'text-slate-300'}`}>
+                     <div className={`p-3 rounded-2xl bg-white shadow-lg border border-surface-100 ${isCompleted ? 'text-primary-600' : 'text-slate-300'}`}>
                         {getTaskIcon(task)}
                      </div>
                    )}
@@ -200,7 +199,7 @@ const RoadmapCanvas = ({ tasks }) => {
                      />
                    )}
                    <Motion.div 
-                      className={`w-8 h-8 rounded-full border-4 z-20 flex items-center justify-center ${isCompleted ? 'bg-primary-600 border-primary-200' : 'bg-white dark:bg-surface-800 border-surface-100 dark:border-surface-700'}`}
+                      className={`w-8 h-8 rounded-full border-4 z-20 flex items-center justify-center ${isCompleted ? 'bg-primary-600 border-primary-200' : 'bg-white border-surface-100'}`}
                       animate={{ scale: isCurrent ? 1.2 : 1 }}
                    >
                      {isCompleted && <div className="w-2 h-2 bg-white rounded-full" />}
@@ -218,11 +217,11 @@ const RoadmapCanvas = ({ tasks }) => {
 
                 {/* Right Side (Text) */}
                 <div className="flex-1">
-                   <div className={`transition-all ${isCompleted ? 'text-primary-600 dark:text-primary-400 font-black' : 'text-slate-400 dark:text-slate-600 font-bold'} text-sm leading-tight max-w-[120px]`}>
+                   <div className={`transition-all ${isCompleted ? 'text-primary-600 font-black' : 'text-slate-400 font-bold'} text-sm leading-tight max-w-[120px]`}>
                       {task.title}
                    </div>
                    {index % 2 !== 0 && (
-                     <div className={`mt-2 p-3 rounded-2xl bg-white dark:bg-surface-800 shadow-lg border border-surface-100 dark:border-surface-700 inline-block ${isCompleted ? 'text-primary-600 dark:text-primary-400' : 'text-slate-300'}`}>
+                     <div className={`mt-2 p-3 rounded-2xl bg-white shadow-lg border border-surface-100 inline-block ${isCompleted ? 'text-primary-600' : 'text-slate-300'}`}>
                         {getTaskIcon(task)}
                      </div>
                    )}
@@ -233,7 +232,7 @@ const RoadmapCanvas = ({ tasks }) => {
 
           {/* Goal Marker */}
           <div className="mt-8 flex flex-col items-center">
-            <div className={`p-4 rounded-3xl transition-all ${completedCount === totalTasks ? 'bg-accent shadow-xl shadow-accent/30 rotate-12 scale-110' : 'bg-slate-100 dark:bg-surface-800 opacity-50'}`}>
+            <div className={`p-4 rounded-3xl transition-all ${completedCount === totalTasks ? 'bg-accent shadow-xl shadow-accent/30 rotate-12 scale-110' : 'bg-slate-100 opacity-50'}`}>
               <Trophy size={32} className={completedCount === totalTasks ? 'text-white' : 'text-slate-400'} />
             </div>
             <span className={`text-[10px] font-black uppercase tracking-widest mt-2 ${completedCount === totalTasks ? 'text-accent' : 'text-slate-400'}`}>Victory</span>

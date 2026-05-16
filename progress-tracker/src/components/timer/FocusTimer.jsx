@@ -14,21 +14,23 @@ const FocusTimer = () => {
       interval = setInterval(() => {
         setTimeLeft((time) => time - 1);
       }, 1000);
-    } else if (timeLeft === 0) {
-      setIsActive(false);
+    } else if (timeLeft === 0 && isActive) {
+      setTimeout(() => {
+        setIsActive(false);
+        // Toggle mode
+        if (mode === 'work') {
+          setMode('break');
+          setTimeLeft(5 * 60);
+        } else {
+          setMode('work');
+          setTimeLeft(25 * 60);
+        }
+      }, 0);
       confetti({
         particleCount: 100,
         spread: 70,
         origin: { y: 0.6 }
       });
-      // Toggle mode
-      if (mode === 'work') {
-        setMode('break');
-        setTimeLeft(5 * 60);
-      } else {
-        setMode('work');
-        setTimeLeft(25 * 60);
-      }
     }
     return () => clearInterval(interval);
   }, [isActive, timeLeft, mode]);

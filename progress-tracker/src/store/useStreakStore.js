@@ -50,7 +50,7 @@ const useStreakStore = create(
         });
       },
 
-      useFreeze: () => {
+      activateFreeze: () => {
         const { streak } = get();
         if (streak.freezesAvailable > 0) {
           set({

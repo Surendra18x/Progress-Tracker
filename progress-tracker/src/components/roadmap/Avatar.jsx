@@ -3,10 +3,8 @@ import { motion as Motion } from 'framer-motion';
 
 const Avatar = ({ isJumping, isCelebrating }) => {
   return (
-    <Motion.svg
-      width="60"
-      height="80"
-      viewBox="0 0 60 80"
+    <Motion.div
+      className="relative w-12 h-12"
       animate={isCelebrating ? {
         y: [0, -40, 0],
         rotate: [0, 360],
@@ -25,31 +23,23 @@ const Avatar = ({ isJumping, isCelebrating }) => {
         ease: "easeInOut"
       }}
     >
-      {/* Body */}
-      <rect x="15" y="30" width="30" height="35" rx="10" fill="#22c55e" className="dark:fill-primary-500" />
-      {/* Head */}
-      <circle cx="30" cy="20" r="12" fill="#16a34a" className="dark:fill-primary-600" />
-      {/* Eyes */}
-      <circle cx="26" cy="18" r="2" fill="white" />
-      <circle cx="34" cy="18" r="2" fill="white" />
-      {/* Backpack (Student vibe) */}
-      <rect x="10" y="35" width="10" height="20" rx="4" fill="#14532d" className="dark:fill-primary-900" />
-      {/* Cap */}
-      <path d="M 18 15 Q 30 5 42 15" fill="none" stroke="#14532d" strokeWidth="4" strokeLinecap="round" className="dark:stroke-primary-900" />
-      {/* Legs */}
-      <Motion.line 
-        x1="22" y1="65" x2="22" y2="75" 
-        stroke="#22c55e" strokeWidth="4" strokeLinecap="round"
-        className="dark:stroke-primary-500"
-        animate={{ y2: isJumping ? [75, 70, 75] : 75 }}
+      <div className="w-full h-full rounded-2xl border-4 border-white shadow-xl overflow-hidden bg-primary-500">
+        <img 
+          src="/avatar.png" 
+          alt="Avatar" 
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            e.target.src = "https://ui-avatars.com/api/?name=Commander&background=22c55e&color=fff";
+          }}
+        />
+      </div>
+      {/* Decorative pulse effect */}
+      <Motion.div 
+        className="absolute -inset-2 bg-primary-500/20 rounded-3xl -z-10"
+        animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0, 0.5] }}
+        transition={{ repeat: Infinity, duration: 2 }}
       />
-      <Motion.line 
-        x1="38" y1="65" x2="38" y2="75" 
-        stroke="#22c55e" strokeWidth="4" strokeLinecap="round"
-        className="dark:stroke-primary-500"
-        animate={{ y2: isJumping ? [75, 70, 75] : 75 }}
-      />
-    </Motion.svg>
+    </Motion.div>
   );
 };
 

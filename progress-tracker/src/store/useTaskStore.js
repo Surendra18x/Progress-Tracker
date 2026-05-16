@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { getLocalDateString } from '../utils/dateHelpers';
 
 const useTaskStore = create(
   persist(
@@ -9,7 +10,7 @@ const useTaskStore = create(
       addTask: (title, effort = 'medium') => {
         const newTask = {
           id: crypto.randomUUID(),
-          date: new Date().toISOString().split('T')[0],
+          date: getLocalDateString(),
           title,
           effort,
           status: 'pending',
